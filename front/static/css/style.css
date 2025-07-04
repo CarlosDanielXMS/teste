@@ -1,0 +1,774 @@
+/* Variáveis CSS para consistência */
+:root {
+    --primary-color: #2196F3; /* Material Design Blue 500 */
+    --primary-dark-color: #1976D2; /* Material Design Blue 700 */
+    --primary-light-color: #BBDEFB; /* Material Design Blue 100 */
+    --secondary-color: #4CAF50; /* Material Design Green 500 */
+    --secondary-dark-color: #388E3C; /* Material Design Green 700 */
+    --background-color: #f5f7fa;
+    --card-background: #ffffff;
+    --text-color: #212121; /* Grey 900 */
+    --subtle-text-color: #757575; /* Grey 600 */
+    --border-color: #e0e0e0; /* Grey 300 */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-color: #f0f0f0;
+    --sidebar-width: 250px;
+    --header-height: 64px;
+}
+
+/* Base styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex; /* Ensures the app-container takes full height */
+    min-height: 100vh;
+}
+
+/* General button styles */
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none; /* For button-like links */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(33, 150, 243, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark-color);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-dark-color);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-icon-only {
+    padding: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--subtle-text-color);
+}
+
+.btn-icon-only:hover {
+    background-color: var(--hover-color);
+}
+
+/* App Layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Header */
+.app-header {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    height: 40px;
+}
+
+.logo-container h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 8px 15px;
+    border: 1px solid var(--border-color);
+}
+
+.search-bar .material-icons {
+    color: var(--subtle-text-color);
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--text-color);
+    outline: none;
+    width: 250px;
+}
+
+.icon-button {
+    cursor: pointer;
+    color: var(--subtle-text-color);
+    transition: color 0.3s ease;
+}
+
+.icon-button:hover {
+    color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative; /* For dropdown positioning */
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    min-width: 150px;
+    padding: 10px 0;
+    display: none; /* Hidden by default */
+    z-index: 1100;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s ease;
+}
+
+.profile-dropdown a:hover {
+    background-color: var(--hover-color);
+}
+
+.user-profile.active .profile-dropdown {
+    display: block; /* Show when active */
+}
+
+
+/* Sidebar */
+.app-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--card-background);
+    padding-top: 20px;
+    box-shadow: 2px 0 5px var(--shadow-color);
+    position: fixed; /* Fixed position */
+    height: calc(100vh - var(--header-height)); /* Take full height below header */
+    top: var(--header-height);
+    left: 0;
+    z-index: 900;
+    overflow-y: auto; /* Enable scrolling for many items */
+}
+
+.app-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    gap: 15px;
+    color: var(--subtle-text-color);
+    font-weight: 500;
+}
+
+.sidebar-item:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+.sidebar-item.active {
+    background-color: var(--primary-light-color);
+    color: var(--primary-color);
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px; /* Adjust padding due to border */
+}
+
+.sidebar-item .material-icons {
+    font-size: 24px;
+}
+
+/* Main Content Area */
+.app-content {
+    margin-left: var(--sidebar-width); /* Push content to the right of sidebar */
+    padding: 30px;
+    flex-grow: 1; /* Allow content to take remaining space */
+    overflow-y: auto; /* Enable scrolling for content */
+}
+
+.module-content {
+    display: none; /* Hidden by default, shown by JS */
+}
+
+.module-content.active {
+    display: block;
+}
+
+/* Dashboard specific styles */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card h3 {
+    font-size: 18px;
+    color: var(--subtle-text-color);
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.stat-card .material-icons {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 60px;
+    color: var(--primary-light-color);
+    opacity: 0.6;
+}
+
+.recent-activity {
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.recent-activity h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.recent-activity ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-activity li {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.recent-activity li:last-child {
+    border-bottom: none;
+}
+
+.recent-activity li .material-icons {
+    margin-right: 15px;
+    color: var(--primary-color); /* Or other relevant color */
+    font-size: 20px;
+}
+
+.recent-activity li .material-icons.cancel {
+    color: #f44336; /* Red for cancel */
+}
+.recent-activity li .material-icons.add_task {
+    color: #ff9800; /* Orange for new */
+}
+
+/* General module header */
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.module-header h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+/* Table styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners apply to content */
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.data-table th,
+.data-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background-color: var(--primary-light-color);
+    color: var(--primary-dark-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Subtle zebra striping */
+}
+
+.data-table tr:hover {
+    background-color: var(--hover-color);
+}
+
+.data-table .actions {
+    display: flex;
+    gap: 8px;
+}
+
+.data-table .actions .btn-icon-only {
+    color: var(--subtle-text-color);
+}
+
+.data-table .actions .btn-icon-only:hover {
+    color: var(--primary-color);
+}
+
+/* Form styles (general for modals/edit screens) */
+.form-section {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group select {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: fadeInSlideUp 0.3s forwards;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.close-button {
+    color: var(--subtle-text-color);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-dark-color);
+}
+
+/* Status badges for tables */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background-color: #e8f5e9; /* Light green */
+    color: #2e7d32; /* Darker green */
+}
+
+.status-inactive {
+    background-color: #ffebee; /* Light red */
+    color: #c62828; /* Darker red */
+}
+
+/* Module Controls (Search/Filter) */
+.module-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.module-controls input,
+.module-controls select {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-controls input:focus,
+.module-controls select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+.module-controls input {
+    flex-grow: 1; /* Take up available space */
+    max-width: 400px;
+}
+
+/* Calendar Toolbar */
+.calendar-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-background);
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    margin-bottom: 25px;
+}
+
+.date-navigation, .view-switcher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.current-period {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+    min-width: 180px; /* Ensure space for date range */
+    text-align: center;
+}
+
+/* Calendar Grid */
+.calendar-grid-container {
+    display: grid;
+    grid-template-columns: var(--time-column-width, 80px) 1fr; /* Time column + main grid */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.time-column {
+    border-right: 1px solid var(--border-color);
+    padding-top: 50px; /* Space for header row */
+}
+
+.time-slot-label {
+    height: var(--slot-height, 50px); /* Height of each time slot */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 13px;
+    color: var(--subtle-text-color);
+    border-bottom: 1px dashed var(--border-color); /* Subtle line for time */
+    box-sizing: border-box; /* Include padding/border in height */
+}
+
+.time-slot-label:last-child {
+    border-bottom: none;
+}
+
+.calendar-main-grid {
+    display: grid;
+    grid-template-rows: auto repeat(calc((18 - 8) * (60 / 30)), var(--slot-height, 50px)); /* 8am to 6pm, 30 min intervals */
+    /* grid-template-columns will be set by JS based on view (7 for week, numProf for day) */
+    position: relative; /* For absolute positioning of appointments */
+}
+
+.grid-header-corner {
+    /* Style for the empty cell above the time column */
+    height: 50px; /* Match header height */
+    background-color: var(--primary-light-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.calendar-day-header {
+    height: 50px; /* Fixed height for headers */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-light-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    font-weight: 500;
+    color: var(--primary-dark-color);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.calendar-day-header.today {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calendar-day-header .day-name {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.calendar-day-header .day-date {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.calendar-grid-cell {
+    border-bottom: 1px dashed var(--border-color);
+    border-right: 1px solid var(--border-color);
+    position: relative; /* For positioning appointment cards */
+    /* Add pointer cursor to indicate clickable area for new appointments */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-grid-cell:hover {
+    background-color: #f0f8ff; /* Light blue hover for free slots */
+}
+
+.calendar-grid-cell:nth-child(7n) { /* Last column of week view */
+    border-right: none;
+}
+.calendar-grid-cell:nth-child(even) { /* For professionals in day view */
+    /* Can add subtle shading if needed for alternating professional columns */
+}
+
+
+/* Appointment Card styles */
+.appointment-card {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    width: calc(100% - 10px); /* Account for padding/margin */
+    left: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1; /* Ensure appointments are above grid lines */
+    box-sizing: border-box;
+}
+
+.appointment-card:hover {
+    background-color: var(--primary-dark-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.appointment-card.cancelled {
+    background-color: #f44336; /* Red for cancelled */
+    opacity: 0.7;
+    text-decoration: line-through;
+}
+
+.appointment-card.cancelled:hover {
+     background-color: #d32f2f; /* Darker red */
+}
+
+.appt-time {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.appt-title {
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.appt-details {
+    font-size: 11px;
+    opacity: 0.9;
+}
+
+.appt-status {
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 5px;
+}
